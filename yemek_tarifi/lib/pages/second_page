@@ -1,0 +1,53 @@
+import 'package:flutter/material.dart';
+import 'settings.dart';
+
+class SecondPage extends StatelessWidget {
+  @override
+  Widget build(BuildContext context) {
+    return Scaffold(
+      appBar: AppBar(
+        title: Text('Second Page'),
+      ),
+      body: Center(
+        child: Text(
+          'Second Page Content',
+          style: TextStyle(fontSize: 24.0),
+        ),
+      ),
+      drawer: Drawer(
+        child: ListView(
+          padding: EdgeInsets.zero,
+          children: <Widget>[
+            DrawerHeader(
+              child: Text(
+                'My Drawer',
+                style: TextStyle(color: Colors.white, fontSize: 24),
+              ),
+              decoration: BoxDecoration(
+                color: Colors.blue,
+              ),
+            ),
+            ListTile(
+              title: Text('My Profile'),
+              onTap: () {
+                // Buraya tıklanınca yapılacak işlemler gelecek.
+                Navigator.pop(context); // Drawer'ı kapatmak için kullanılır.
+                // Profil sayfasına gitmek için Navigator.push() kullanılabilir.
+              },
+            ),
+            ListTile(
+              title: Text('Settings'),
+              onTap: () {
+                Navigator.pop(context); // Drawer'ı kapatmak için kullanılır.
+                Navigator.push(
+                  context,
+                  MaterialPageRoute(builder: (context) => SettingsPage()),
+                );
+              },
+            ),
+          ],
+        ),
+      ),
+    );
+  }
+}
